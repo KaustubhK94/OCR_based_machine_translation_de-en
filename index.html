@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Translation</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .uploaded-image {
+            max-width: 80%;
+        }
+
+        .translated-text-box {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            overflow-wrap: break-word; /* Allow text to wrap within the box */
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Translation</h1>
+
+    <!-- Form for uploading an image -->
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".jpg, .jpeg, .png">
+        <br>
+        <input type="submit" value="Upload and Translate">
+    </form>
+
+    <!-- Display the uploaded image and translated text -->
+    <div class="container">
+        {% if uploaded_image %}
+            <img class="uploaded-image" src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
+        {% endif %}
+
+        <div class="translated-text-box">
+            <h2>Translated Text:</h2>
+            <pre>{{ translated_text|safe }}</pre>
+        </div>
+    </div>
+</body>
+</html>
