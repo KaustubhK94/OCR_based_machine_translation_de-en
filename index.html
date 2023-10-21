@@ -1,28 +1,59 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Image Translation</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            margin-top: 20px;
         }
 
         .uploaded-image {
             max-width: 80%;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
         }
 
         .translated-text-box {
             border: 1px solid #ccc;
+            border-radius: 5px;
             margin: 10px;
-            padding: 10px;
+            padding: 15px;
             width: 80%;
-            overflow-wrap: break-word; /* Allow text to wrap within the box */
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
     <h1>Image Translation</h1>
 
@@ -36,7 +67,7 @@
     <!-- Display the uploaded image and translated text -->
     <div class="container">
         {% if uploaded_image %}
-            <img class="uploaded-image" src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
+        <img class="uploaded-image" src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
         {% endif %}
 
         <div class="translated-text-box">
@@ -45,4 +76,5 @@
         </div>
     </div>
 </body>
+
 </html>
